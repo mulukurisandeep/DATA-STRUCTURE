@@ -1,0 +1,19 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+struct Node* findIntersection(struct Node* head1, struct Node* head2) {
+    struct Node* ptr1 = head1;
+    struct Node* ptr2 = head2;
+
+    while (ptr1 != ptr2) {
+        ptr1 = ptr1 ? ptr1->next : head2;
+        ptr2 = ptr2 ? ptr2->next : head1;
+    }
+
+    return ptr1;
+}
