@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+int main() {
+    int array[5] = {1, 2, 3, 4, 5};
+    int insertIndex = 2;
+    int newValue = 10;
+    int arraySize = 5;
+
+    for (int i = arraySize - 1; i >= insertIndex; i--) {
+        array[i + 1] = array[i];
+    }
+
+    array[insertIndex] = newValue;
+    arraySize++;
+
+    printf("Array after insertion:\n");
+    for (int i = 0; i < arraySize; i++) {
+        printf("%d ", array[i]);
+    }
+
+    return 0;
+}
