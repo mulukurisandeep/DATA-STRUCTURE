@@ -1,0 +1,58 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+
+#define MAX_SIZE 100
+
+int stack[MAX_SIZE];
+int top = -1;
+
+void push(int item) {
+    if (top >= MAX_SIZE - 1) {
+        printf("Stack Overflow\n");
+        return;
+    }
+    stack[++top] = item;
+}
+
+int pop() {
+    if (top < 0) {
+        printf("Stack Underflow\n");
+        exit(1);
+    }
+    return stack[top--];
+}
+
+int evaluatePostfix(char* exp) {
+    int i = 0;
+    while (exp[i] != '\0') {
+        if (isdigit(exp[i])) {
+            push(exp[i] - '0');
+        } else {
+            int operand2 = pop();
+            int operand1 = pop();
+            switch (exp[i]) {
+                case '+':
+                    push(operand1 + operand2);
+                    break;
+                case '-':
+                    push(operand1 - operand2);
+                    break;
+                case '*':
+                    push(operand1 * operand2);
+                    break;
+                case '/':
+                    push(operand1 / operand2);
+                    break;
+            }
+        }
+        i++;
+    }
+    return pop();
+}
+
+int main() {
+    char exp[] = "44 2 / 6 -";
+    printf("Result: %d\n", evaluatePostfix(exp));
+    return 0;
+}
