@@ -1,0 +1,23 @@
+#include <stdio.h>
+
+int main() {
+    int arr[] = {10, 20, 30, 40, 50};
+    int search_element = 30;
+    int size = sizeof(arr) / sizeof(arr[0]);
+    int i, location = -1;
+
+    for (i = 0; i < size; i++) {
+        if (arr[i] == search_element) {
+            location = i;
+            break;
+        }
+    }
+
+    if (location != -1) {
+        printf("Element %d found at index %d in the array.", search_element, location);
+    } else {
+        printf("Element %d not found in the array.", search_element);
+    }
+
+    return 0;
+}
