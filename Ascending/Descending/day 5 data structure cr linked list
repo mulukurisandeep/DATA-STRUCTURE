@@ -1,0 +1,67 @@
+#include<stdio.h>
+#define size 10
+int top=-1;
+int stack[size];
+int isfull()
+{
+    if(top==size-1)
+        return 1;
+    else
+        return 0;
+}
+int push(int data)
+{
+    if(!isfull())
+    {
+        top=top+1;
+        stack[top]=data;
+    }
+    else
+    {
+        printf("\nHeap overflow");
+    }
+}
+int isempty()
+{
+    if(top==-1)
+        return 1;
+    else
+        return 0;
+}
+int pop()
+{
+    if(!isempty())
+    {
+        int data=stack[top];
+        top=top-1;
+    }
+    else
+    {
+        printf("\nHeap underflow");
+    }
+}
+int peek()
+{
+    return stack[top];
+}
+void display()
+{
+    int i;
+    for(i=top;i>=0;i--)
+    {
+        printf("%d ",stack[i]);
+    }
+}
+int main()
+{
+    push(1);
+    push(2);
+    push(3);
+    push(4);
+    pop();
+    pop();
+    pop();
+    peek();
+    display();
+    return 0;
+}
