@@ -1,0 +1,21 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+struct Node* head = NULL;
+
+void InsertBeg(int value);
+void InsertMid(int value, int position);
+void InsertEnd(int value);
+void DeleteBeg();
+void DeleteMid(int position);
+void DeleteEnd();
+void Display();
+struct Node* Search(int key);
+void Sort();
+int FindMax();
+int FindMin();
