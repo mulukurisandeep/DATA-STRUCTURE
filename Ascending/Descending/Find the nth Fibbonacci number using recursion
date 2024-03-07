@@ -1,0 +1,17 @@
+fibonacci_cache = {}
+
+def fibonacci_recursive_memoization(n):
+    if n in fibonacci_cache:
+        return fibonacci_cache[n]
+    
+    if n <= 1:
+        return n
+    else:
+        result = fibonacci_recursive_memoization(n-1) + fibonacci_recursive_memoization(n-2)
+        fibonacci_cache[n] = result
+        return result
+
+# Example Usage
+n = 10
+result = fibonacci_recursive_memoization(n)
+print(f"The {n}th Fibonacci number is: {result}")
